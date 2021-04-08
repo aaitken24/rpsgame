@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Console game</title>
+    </head>
+    <body>
+        <script>
+            function computerPlay(){
+                let randNum= Math.ceil(Math.random()*3)
+                if (randNum==1) {
+                    console.log("paper")
+                }
+                else if (randNum==2) {
+                    console.log("rock")
+                }
+                else if (randNum==3) {
+                    console.log("scissors")
+                }
+                else {
+                    console.error("Something went wrong.");
+                }
+            }
+            computerPlay();
+            function playerPlay() {
+                prompt("Pick rock paper or scissors.")
+            }
+            playerPlay();
+            function winLoose(){
+
+            }
+            function compChoice(){
+                
+            }
+            </script>
+</body>
+</html>
