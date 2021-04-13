@@ -11,29 +11,60 @@
             function computerPlay(){
                 let randNum= Math.ceil(Math.random()*3)
                 if (randNum==1) {
-                    console.log("paper")
+                    return("paper")
                 }
                 else if (randNum==2) {
-                    console.log("rock")
+                    return("rock")
                 }
                 else if (randNum==3) {
-                    console.log("scissors")
+                    return("scissors")
                 }
                 else {
-                    console.error("Something went wrong.");
+                    return("Error! Something went wrong.");
                 }
             }
+            let comptChoice=computerPlay
             computerPlay();
             function playerPlay() {
                 prompt("Pick rock paper or scissors.")
             }
+            let playerChoice=playerPlay
             playerPlay();
             function winLoose(){
-
+                if (playerChoice=="rock" && comptChoice=="rock") {
+                    return("You tied. Rock and Rock.")
+                }
+                else if (playerChoice=="rock" && comptChoice=="paper"){
+                    return("You lost. Rock was beaten by paper.")
+                }
+                else if (playerChoice=="rock" && comptChoice=="scissors"){
+                    return("You win. Rock beat paper.")
+                }
+                else if (playerChoice=="paper" && comptChoice=="rock"){
+                    return("You win. Paper beat rock.")
+                }
+                else if (playerChoice=="paper" && comptChoice=="paper"){
+                    return("You tied. Paper and paper.")
+                }
+                else if (playerChoice=="paper" && comptChoice=="scissors"){
+                    return("You lost. Paper was beaten by scissors")
+                }
+                else if (playerChoice=="scissors" && comptChoice=="rock"){
+                    return("You lost. Scissors was beaten by rock.")
+                }
+                else if (playerChoice=="scissors" && comptChoice=="paper"){
+                    return("You won. Scissors beat paper.")
+                }
+                else if (playerChoice=="scissors" && comptChoice=="scissors"){
+                    return("You tied. Scissors and Scissors.")
+                }
+                else {
+                    return("Error! Something went wrong.")
+                }
             }
-            function compChoice(){
-                
-            }
-            </script>
+            let winnerLooser=winLoose
+            winLoose();
+            console.log(winnerLooser)
+        </script>
 </body>
 </html>
