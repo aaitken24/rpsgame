@@ -11,64 +11,77 @@
             function computerPlay(){
                 let randNum= Math.ceil(Math.random()*3)
                 if (randNum==1) {
-                    return("paper")
+                    return("paper");
                 }
                 else if (randNum==2) {
-                    return("rock")
+                    return("rock");
                 }
                 else if (randNum==3) {
-                    return("scissors")
+                    return("scissors");
                 }
                 else {
                     return("Error! Something went wrong.");
                 }
             }
-            const comptChoice=computerPlay
-            function playerPlay() {
-                prompt("Pick rock paper or scissors.")
+            const comptChoice=computerPlay();
+            function playerPlay(){
+                const playerAnswer= prompt("Pick rock paper or scissors.");
+                return playerAnswer.toLowerCase();
+                switch(playerAnswer) {
+                    case "rock":
+                    return("rock")
+                    break;
+                case "paper":
+                    return("paper")
+                    break;
+                case "scissors":
+                    return("scissors")
+                    break;
+                default:
+                    return("Error something went wrong.")
+                    break;
+                }
             }
-            const playerChoice=playerPlay
+            const playerChoice=playerPlay();
             function winLoose(){
                 if (playerChoice=="rock" && comptChoice=="rock") {
-                    return("You tied. Rock and Rock.")
+                    return("You tied. Rock and Rock.");
                 }
                 else if (playerChoice=="rock" && comptChoice=="paper"){
-                    return("You lost. Rock was beaten by paper.")
+                    return("You lost. Rock was beaten by paper.");
                 }
                 else if (playerChoice=="rock" && comptChoice=="scissors"){
-                    return("You win. Rock beat paper.")
+                    return("You win. Rock beat scissors.");
                 }
                 else if (playerChoice=="paper" && comptChoice=="rock"){
-                    return("You win. Paper beat rock.")
+                    return("You win. Paper beat rock.");
                 }
                 else if (playerChoice=="paper" && comptChoice=="paper"){
-                    return("You tied. Paper and paper.")
+                    return("You tied. Paper and paper.");
                 }
                 else if (playerChoice=="paper" && comptChoice=="scissors"){
-                    return("You lost. Paper was beaten by scissors")
+                    return("You lost. Paper was beaten by scissors");
                 }
                 else if (playerChoice=="scissors" && comptChoice=="rock"){
-                    return("You lost. Scissors was beaten by rock.")
+                    return("You lost. Scissors was beaten by rock.");
                 }
                 else if (playerChoice=="scissors" && comptChoice=="paper"){
-                    return("You won. Scissors beat paper.")
+                    return("You won. Scissors beat paper.");
                 }
                 else if (playerChoice=="scissors" && comptChoice=="scissors"){
-                    return("You tied. Scissors and Scissors.")
+                    return("You tied. Scissors and Scissors.");
                 }
                 else {
-                    return("Error! Something went wrong.")
+                    return("Error! Something went wrong.");
                 }
             }
-            const winnerLooser=winLoose
-            
+            const winnerLooser=winLoose();
             function playRound(){
-                computerPlay()
-                playerPlay()
-                winLoose()
-                console.log(winnerLooser)
+                computerPlay();
+                playerPlay();
+                winLoose();
+                console.log(winnerLooser);
             }
-            playRound();
         </script>
     </body>
 </html>
