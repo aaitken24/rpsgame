@@ -23,13 +23,11 @@
                     return("Error! Something went wrong.");
                 }
             }
-            let comptChoice=computerPlay
-            computerPlay();
+            const comptChoice=computerPlay
             function playerPlay() {
                 prompt("Pick rock paper or scissors.")
             }
-            let playerChoice=playerPlay
-            playerPlay();
+            const playerChoice=playerPlay
             function winLoose(){
                 if (playerChoice=="rock" && comptChoice=="rock") {
                     return("You tied. Rock and Rock.")
@@ -62,9 +60,15 @@
                     return("Error! Something went wrong.")
                 }
             }
-            let winnerLooser=winLoose
-            winLoose();
-            console.log(winnerLooser)
+            const winnerLooser=winLoose
+            
+            function playRound(){
+                computerPlay()
+                playerPlay()
+                winLoose()
+                console.log(winnerLooser)
+            }
+            playRound();
         </script>
-</body>
+    </body>
 </html>
