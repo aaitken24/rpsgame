@@ -23,65 +23,91 @@
                     return("Error! Something went wrong.");
                 }
             }
-            const comptChoice=computerPlay();
             function playerPlay(){
-                const playerAnswer= prompt("Pick rock paper or scissors.");
-                return playerAnswer.toLowerCase();
-                switch(playerAnswer) {
-                    case "rock":
-                    return("rock")
-                    break;
-                case "paper":
-                    return("paper")
-                    break;
-                case "scissors":
-                    return("scissors")
-                    break;
-                default:
-                    return("Error something went wrong.")
-                    break;
+                let playerAnswer;
+                let check = true;
+                while (check){
+                    playerAnswer= prompt("Pick rock paper or scissors.").toLowerCase();
+                    if (['rock','paper','scissors'].includes(playerAnswer)){
+                        check = false;
+                    }
                 }
+                return playerAnswer;
             }
-            const playerChoice=playerPlay();
-            function winLoose(){
-                if (playerChoice=="rock" && comptChoice=="rock") {
-                    return("You tied. Rock and Rock.");
+            let playerPoints = 0;
+            let computerPoints = 0;
+            function winLoose(playerChoice,comptChoice){
+                if (playerChoice == comptChoice) {
+                    return(`You Tied:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints} to ${computerPoints}`);
                 }
                 else if (playerChoice=="rock" && comptChoice=="paper"){
-                    return("You lost. Rock was beaten by paper.");
+                    return(`You Loose:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints} to ${computerPoints += 1}`);
                 }
                 else if (playerChoice=="rock" && comptChoice=="scissors"){
-                    return("You win. Rock beat scissors.");
+                    return(`You Win:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints += 1} to ${computerPoints}`);
                 }
                 else if (playerChoice=="paper" && comptChoice=="rock"){
-                    return("You win. Paper beat rock.");
-                }
-                else if (playerChoice=="paper" && comptChoice=="paper"){
-                    return("You tied. Paper and paper.");
+                    return(`You Win:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints += 1} to ${computerPoints}`);
                 }
                 else if (playerChoice=="paper" && comptChoice=="scissors"){
-                    return("You lost. Paper was beaten by scissors");
+                    return(`You Loose:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints} to ${computerPoints += 1}`);
                 }
                 else if (playerChoice=="scissors" && comptChoice=="rock"){
-                    return("You lost. Scissors was beaten by rock.");
+                    return(`You Loose:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints} to ${computerPoints += 1}`);
                 }
                 else if (playerChoice=="scissors" && comptChoice=="paper"){
-                    return("You won. Scissors beat paper.");
-                }
-                else if (playerChoice=="scissors" && comptChoice=="scissors"){
-                    return("You tied. Scissors and Scissors.");
+                    return(`You Win:  ${playerChoice} vs ${comptChoice}  Score: ${playerPoints += 1} to ${computerPoints}`);
                 }
                 else {
-                    return("Error! Something went wrong.");
+                    return("Error! Something went wrong check.");
                 }
             }
-            const winnerLooser=winLoose();
             function playRound(){
-                computerPlay();
-                playerPlay();
-                winLoose();
-                console.log(winnerLooser);
+                let playerAnswer = playerPlay();
+                let comptChoice = computerPlay();
+                console.log(winLoose(playerAnswer,comptChoice));
             }
+            function gameWin() {
+                if (playerPoints > computerPoints) {
+                    return("Player wins the game: " +playerPoints +" to " +computerPoints)
+                }
+                else if (playerPoints < computerPoints) {
+                    return("Computer wins the game: " +playerPoints +" to " +computerPoints)
+                }
+                else if (playerPoints == computerPoints) {
+                    return("Tie game: " +playerPoints +" to "  +computerPoints)
+                }
+                else {
+                    return("Error! Something went wrong.")
+                }
+            }
+            
+            let gameIsOn = true;
+            let rounds =0;
+            function gameFive() {
+                
+                while (gameIsOn){
+                    for (let step = 0; step < 2; step++) {
+                    // Runs 5 times, with values of step 0 through 4.
+                        console.log(`Round ${rounds += 1}`)
+                        playRound();
+                    }
+                    
+                    continuePlayingPrompt();
+                }
+                console.log(gameWin())
+            }
+            function continuePlayingPrompt() {
+                let continueAnswer= prompt("Do you wish to continue playing?").toLowerCase();
+                if (continueAnswer == "yes" || continueAnswer == "y"){
+                    gameIsOn = true;
+                }
+                else if (continueAnswer ==  "no" || continueAnswer ==  "n") {
+                    gameIsOn = false;
+                }
+            }
+            
+            gameFive();
         </script>
     </body>
 </html>
